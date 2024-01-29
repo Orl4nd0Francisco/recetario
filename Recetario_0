@@ -1,0 +1,105 @@
+from pathlib import Path
+import os
+
+
+#FUNCION PARA LA DIRECCION DE LAS RECETAS
+def direccion_recetas(ruta):
+    nombre_base=os.path.split(ruta)
+    print(f'El directorio se encuentra en {nombre_base}')
+
+#FUNCION PARA LA CANTIDAD DE RECETAS 
+def cantidad_recetas(ruta_carpeta_carnes):
+    contenido=os.listdir(ruta_carpeta_carnes)
+    print('Las categorias son:')
+    for elemento in contenido:
+        print(elemento)
+
+#FUNCION PARA IMPRIMIR CATEGORIAS DE LAS RECETAS
+def leer_receta(ruta_carpeta,ruta_carnes):
+
+    contenido=os.listdir(ruta_carpeta)
+    for elemento in contenido:
+        print(elemento)
+
+    leer_receta_categoria=input("Elije una categoria \n")
+    
+    if leer_receta_categoria=='Carnes':
+        carnes(ruta_carnes)
+    elif leer_receta_categoria=='Ensaladas':
+        ensaladas(ruta_ensaladas)
+    elif leer_receta_categoria=='Pastas':
+        pastas(ruta_pastas)
+    elif leer_receta_categoria=='Postres':
+        postres(ruta_postres)
+    else:
+        print('Entrada invalida')
+    return
+
+
+#FUNCION PARA LEER LAS RECETAS DE LA CARPETA CARNES
+ 
+def carnes(ruta_carnes):
+    print('Las Recetas disponibles son:')
+    contenido=os.listdir(ruta_carnes)
+    for elemento in contenido:
+        print(elemento)
+    seleccion=input('Elige una receta para abrir')
+    ruta_seleccion=os.path.join(ruta_carnes,seleccion)
+    with open(ruta_seleccion,'r') as archivo:
+        doc_abierto=archivo.read()
+        print(doc_abierto)
+    return  
+
+#FUNCION PARA LEER LAS RECETAS DE LA CATEGORIA ENSALADAS
+def ensaladas(ruta_ensaladas):
+    print('Las Recetas disponibles son:')
+    contenido=os.listdir(ruta_ensaladas)
+    for elemento in contenido:
+        print(elemento)
+    return
+
+#FUNCION PARA LEER LAS RECETAS DE LA CATEGORIA PASTAS
+def pastas(ruta_pastas):
+    print('Las Recetas disponibles son:')
+    contenido=os.listdir(ruta_pastas)
+    for elemento in contenido:
+        print(elemento)
+    return
+
+#FUNCION PARA LEER LAS RECETAS DE LA CATEGORIA POSTRES
+def postres(ruta_postres):
+    print('Las Recetas disponibles son:')
+    contenido=os.listdir(ruta_postres)
+    for elemento in contenido:
+        print(elemento)
+    return
+
+#RUTAS DE LAS CARPETAS
+ruta_carpeta='C:\\Users\\PACO\\Desktop\\Recetas'
+ruta_carnes='C:\\Users\\PACO\\Desktop\\Recetas\\Carnes'
+ruta_ensaladas='C:\\Users\\PACO\\Desktop\\Recetas\\Ensaladas'
+ruta_pastas='C:\\Users\\PACO\\Desktop\\Recetas\\Pastas'
+ruta_postres='C:\\Users\\PACO\\Desktop\\Recetas\\Postres'
+
+#PANTALLAS PRINCIPALES
+print("*"*30)
+print("<3 Bienvenido a mi Recetario   <3\n")
+print("*"*45)
+print("Selecciona una opcion")
+
+direccion_recetas(ruta_carpeta)
+cantidad_recetas(ruta_carpeta)
+
+print('*'*15+"Menu"+'*'*15+'\n')
+print("\t[1 Leer receta]")
+print("\t[2 Crear Receta]")
+print("\t[3 Crear Categoria]")
+print("\t[4 Eliminar Receta]")
+print("\t[5 Eliminar Categoria]")
+print("\t[6 Finalizar Programa]")
+
+opc=input("Ingresa la opcion deseada\n")
+print(f"Su seleccion {opc} fue registrada\n")
+
+if opc=="1":
+    leer_receta(ruta_carpeta,ruta_carnes)
